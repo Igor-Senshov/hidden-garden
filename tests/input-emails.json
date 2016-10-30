@@ -1,0 +1,53 @@
+{
+  "passingEmails": [
+    "email@gmail.com",
+    "EMAIL@GMAIL.COM",
+    "email@yahoo.com",
+    "email@outlook.com",
+    "email@hotmail.com",
+    "email@mail.ru",
+    "email@yandex.ru"
+  ],
+  "typoEmails": [
+    "email@gnail.com",
+    "email@gnail.cm",
+    "email@fmail.com",
+    "email@gmapl.com",
+    "email@hatmail.com",
+    "email@hitmail.com",
+    "email@hptail.com",
+    "email@iutlook.com",
+    "email@outlooj.com",
+    "email@outl99k.com",
+    "email@outlook.clm",
+    "email@maul.ru",
+    "email@naul.ru",
+    "email@mail.tu",
+    "email@ail.ru",
+    "email@yandes.ru",
+    "email@spandex.ru",
+    "email@handes.ru"
+  ],
+  "failingEmails": [
+    "email@dom*ain.com",
+    "emaildomaincom",
+    "email@domaincom",
+    "emaildomain.com",
+    "email@dom+in.com",
+    "email@domain.c0om",
+    "email@dom)ain.com",
+    "email@domain.c^om",
+    "email@do%main.com",
+    "email@doma#in.com",
+    "email@doma!in.com",
+    "email@doma@in.com",
+    "email@domai&n.com",
+    "email@domain.*com",
+    "email@domain.co(m",
+    "email@domai=n.com",
+    "email@<domain.com",
+    "email@doma/in.com",
+    "email@doma|in.com",
+    "email@domain.c-om"
+  ]
+}

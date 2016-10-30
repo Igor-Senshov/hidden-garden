@@ -19,15 +19,16 @@ angular.module('emailAutoCorrection', ['ionic'])
         }
     });
 })
-    .controller("FormController", ["$scope", function ($scope) {
-        // Initial values.
-        $scope.showEmailError = false;
-        $scope.offerSuggestion = false;
-        // Array with some domain names.
-        var domainList = ["gmail.com", "yahoo.com", "outlook.com", "hotmail.com", "mail.ru", "yandex.ru"];
+    .factory("CheckEmail", function () {
+    var service = {
+        // Regex to test email.
+        validateEmail: function (email) {
+            var emailTest = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return emailTest.test(email);
+        },
         // https://jsperf.com/levenshtein-distance/25 Gustaf Andersson's Levenshtein
         // Optimised Levenshtein distance.
-        function levenshtein(s, t) {
+        calculateLevenshtein: function (s, t) {
             if (s === t) {
                 return 0;
             }
@@ -116,15 +117,19 @@ angular.module('emailAutoCorrection', ['ionic'])
             }
             return h;
         }
-        // Regex to test email.
-        function validateEmail(email) {
-            var emailTest = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            return emailTest.test(email);
-        }
+    };
+    return service;
+})
+    .controller("FormController", ["$scope", "CheckEmail", function ($scope, CheckEmail) {
+        // Initial values.
+        $scope.showEmailError = false;
+        $scope.offerSuggestion = false;
+        // Array with some domain names. New domains can be easily added.
+        var domainList = ["gmail.com", "yahoo.com", "outlook.com", "hotmail.com", "mail.ru", "yandex.ru"];
         // Fetching email data.
         $scope.getInputEmail = function (email) {
             // Testing provided email.
-            if (!validateEmail(email) || typeof email === "undefined") {
+            if (!CheckEmail.validateEmail(email) || typeof email === "undefined") {
                 $scope.showEmailError = true;
                 $scope.offerSuggestion = false;
             }
@@ -139,10 +144,12 @@ angular.module('emailAutoCorrection', ['ionic'])
                 var partBeforeAt_1 = rawEmail.slice(0, domainNameIndex);
                 var partAfterAt = rawEmail.slice(domainNameIndex);
                 var partToReplace_1 = "";
+                // Maximum allowed edits in compared strings.
+                var maxCharacterEdits = 2;
                 // Comparing provided email with our list.
                 for (var domain in domainList) {
-                    var stringSimilarityValue = levenshtein(partAfterAt, domainList[domain]);
-                    if (stringSimilarityValue <= 2 && stringSimilarityValue !== 0) {
+                    var stringSimilarityValue = CheckEmail.calculateLevenshtein(partAfterAt, domainList[domain]);
+                    if (stringSimilarityValue <= maxCharacterEdits && stringSimilarityValue !== 0) {
                         partToReplace_1 = domainList[domain];
                         $scope.offerSuggestion = true;
                         $scope.suggestedEmail = "Did you mean " + partBeforeAt_1 + partToReplace_1 + "?";
