@@ -1,4 +1,4 @@
-# Hidden Garden
+# Hidden Garden (Deprecated)
 
 ##Technologies used:
 - Angular version 1.5.3
@@ -33,7 +33,7 @@ I've also tested with browsers launchers (Firefox, Chrome and Safari). You need 
 **For Android you will need:**
 -	[Android Studio](http://developer.android.com/sdk/index.html)
 -	Also [Java SE Development Kit](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) (I've used 8u111 for Windows x64)
--	[And Genymotion](https://www.genymotion.com/)
+-	And [Genymotion](https://www.genymotion.com/)
 
 Then start Genymotion and run `ionic build android` command from hidden-garden folder. After build is finished just drag and drop APK file from /platforms/android/build/outputs/apk/android-debug.apk to simulator.
 
@@ -42,6 +42,3 @@ Then start Genymotion and run `ionic build android` command from hidden-garden f
 -	Inside hidden-garden folder run `ionic build ios` and `ionic emulate ios` commands. Then launch hiddengarden.xcodeproj inside /platforms/ios/ and use simulator.
 	
 Additional information about testing and how to test as a native app: https://ionicframework.com/docs/guide/testing.html
-
-## Demo.
-You can see app here https://hidden-garden-7914.herokuapp.com/ I'm using "Free" plan, so app "sleeps" after 30 min of inactivity and it will take a little more time to "wake up".
