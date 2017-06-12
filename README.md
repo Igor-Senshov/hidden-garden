@@ -1,20 +1,20 @@
 # Hidden Garden (Deprecated)
 
-##Technologies used:
+## Technologies used:
 - Angular version 1.5.3
 - Ionic version 1.3.1
 - Cordova version 6.3.1
 - Node.js version 4.6.1
 - TypeScript version 2.0.3
 
-##Installation.
+## Installation.
 First install Node, Cordova and Ionic http://ionicframework.com/getting-started/. Then download this repo and run this commands inside hidden-garden folder: `npm install`, `ionic serve`.
 
-##Modify app.
+## Modify app.
 If you want to modify app you can do it inside \www\ folder. Use app.ts file in \www\js\ folder, or app.js if you don't want to use TypeScript.
 
-##Testing.
-###For testing I've used:
+## Testing.
+### For testing I've used:
 -	Karma 1.3.0
 -	Karma Jasmine 1.0.2
 -	Angular mocks 1.5.3
@@ -29,7 +29,7 @@ I've also tested with browsers launchers (Firefox, Chrome and Safari). You need 
 
 **Note: karma-opera-launcher 1.0.0 not working properly in Windows 10. For Edge I didn't find any launcher at the moment, so Opera and Edge were tested manually.**
 	
-###For testing in Android and iOS (I've used simulators).
+### For testing in Android and iOS (I've used simulators).
 **For Android you will need:**
 -	[Android Studio](http://developer.android.com/sdk/index.html)
 -	Also [Java SE Development Kit](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) (I've used 8u111 for Windows x64)
